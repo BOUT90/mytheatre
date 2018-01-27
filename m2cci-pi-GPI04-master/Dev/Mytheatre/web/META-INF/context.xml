@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/Mytheatre">
+  <Resource
+      auth="Container"      
+      driverClassName="com.mysql.jdbc.Driver"     
+      maxActive="10" maxIdle="3" maxWait="10000"     
+      name="jdbc/UFRIMA"      
+      password=""     
+      type="javax.sql.DataSource"      
+      url="jdbc:mysql://localhost:3306/groupe4"      
+      username="root"/>
+</Context>

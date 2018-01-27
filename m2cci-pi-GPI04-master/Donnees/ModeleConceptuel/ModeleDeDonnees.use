@@ -1,0 +1,204 @@
+-- ==========================================================================
+--             MyTheatre  Modele conceptuel de données
+-- ==========================================================================
+-- Pour compiler ce fichier taper la commande suivante:
+--    use -c ModelConceptuel.use
+--
+-- Pour creer des diagrammes à partir de ce fichier lancer
+-- la commande suivante
+--    use ModelConceptuel.use
+-- Se reporter ensuite à la section "Creating diagrams" sur ScribeTools.
+-- http://scribestools.readthedocs.io/en/latest/useocl/index.html#creating-diagrams
+
+
+-- USE OCL ne dispose pas de type date. Le type String est utilisé à la place
+-- Un commentaire indique le type attendu des attributs dates:
+--      DateJour      -- par exemple 21/03/2017
+--      DateHeure     -- par exemple 21/03/2017 12
+--      DateSeconde   -- par exemple 21/03/2017 12:30:21
+
+
+model MyTheatre
+
+
+
+class MyTheatre
+end
+
+
+
+----------------------------------------------------------------------
+--  Categories
+----------------------------------------------------------------------
+
+enum NomCategorie {
+    orchestre,
+    premier_balcon,
+    second_balcon,
+    poulailler
+}
+
+association LesCategories between
+    MyTheatre[1] role theatre qualifier(
+        nomCat : NomCategorie)
+    Categorie[1] role category
+end
+
+class Categorie
+attributes
+    prix : Real
+end
+
+
+----------------------------------------------------------------------
+--  Sieges
+----------------------------------------------------------------------
+
+association LesSiege between
+    MyTheatre[1] role theatre qualifier(
+        numPlace : Integer,
+        numRang : Integer)
+    Siege[1] role siege
+end
+
+class Siege
+end
+
+
+----------------------------------------------------------------------
+--  Zones
+----------------------------------------------------------------------
+
+association LesZones between
+    MyTheatre[1] role theatre qualifier(
+        numZone : Integer)
+    Zone[1] role zone
+end
+
+class Zone
+end
+
+
+----------------------------------------------------------------------
+--  Spectacles
+----------------------------------------------------------------------
+
+association LesSpectacles between
+    MyTheatre[1] role theatre qualifier(
+        numS : Integer)
+    Spectacle[1] role spectacle
+end
+
+class Spectacle
+attributes
+    nomS : String
+    resume : String
+    duree : Integer
+end
+
+
+----------------------------------------------------------------------
+--  Photos
+----------------------------------------------------------------------
+
+association LesPhotos between
+    MyTheatre[1] role theatre qualifier(
+        numPhoto : Integer)
+    Photo[1] role photo
+end
+
+class Photo
+attributes
+    contenu : String
+end
+
+
+----------------------------------------------------------------------
+--  Representations
+----------------------------------------------------------------------
+
+association APourRepresentation between
+    Spectacle[1] role representation qualifier(
+        dateRep : String ) -- DateHeure
+    Representation[1] role representation
+end
+
+class Representation
+operations
+    nbPlaceDispos() : Integer
+end
+
+
+
+----------------------------------------------------------------------
+--  Dossiers
+----------------------------------------------------------------------
+
+association LesDossiers between
+    MyTheatre[1] role theatre qualifier(
+        numDossier:Integer)
+    Dossier[1] role dossier
+end
+
+class Dossier
+operations
+    montant() : Real
+end
+
+
+----------------------------------------------------------------------
+--  Tickets
+----------------------------------------------------------------------
+
+association LesTickets between
+    MyTheatre[1] role theatre qualifier(
+        numSerie:Integer)
+    Ticket[1] role ticket
+end
+
+associationclass Ticket between
+    Siege[*] role siegesOccupes qualifier(
+        numS : Integer,
+        dateRep : String ) -- DateHeure
+    Representation[0..1] role representation
+attributes
+    dateEmission : String  -- DateSeconde
+end
+
+
+
+
+----------------------------------------------------------------------
+--  Associations standards
+----------------------------------------------------------------------
+
+
+
+
+association EstDansZoneC between
+    Siege[1..*] role sieges
+    Zone[1] role zone
+end
+
+association EstDeCategorie between
+    Zone[1..*] role zones
+    Categorie[1] role categorie
+end
+
+
+
+association EstVenduDans between
+    Ticket[1..*] role tickets
+    Dossier[1] role dossier
+end
+
+
+
+
+association Illustre between
+    Photo[*] role photos
+    Spectacle[*] role spectacles
+end
+
+
+

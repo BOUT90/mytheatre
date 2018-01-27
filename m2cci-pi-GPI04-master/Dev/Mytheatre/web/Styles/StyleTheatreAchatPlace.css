@@ -1,0 +1,143 @@
+/* la scène */
+
+#representationDate {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width:100%;
+}
+
+.front-indicator {
+    height: 50px;
+    margin-bottom: 20px;
+    background-color: #cccccc;	
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    font-size: 300%;
+}
+
+.wrapper2 {
+    margin:auto;
+    width:1000px;
+    background-color: white;
+    min-height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width:1280px;
+    position: relative;
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.7);
+    
+}
+
+.wrapper1 {
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#map-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#commande {
+    margin: 0px 5px 0px 5px;
+    font-size: 12px;
+}
+
+
+/* */
+div.seatCharts-cell {
+    color: #182C4E;  /* couleur du texte pour les numéros de rangées */
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+
+}
+
+/* cellule représentant un siège */
+div.seatCharts-seat {
+    color:#FFFFFF;  /* couleur du texte pour les numéros de siège */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* une rangée de sièges */
+div.seatCharts-row {
+    height: 35px;
+}
+
+/* places disponibles */
+div.seatCharts-seat.available {
+    background-color: blue; /* #B9DEA0; */
+
+}
+/* places disponibles de première catégorie  */
+div.seatCharts-seat.available.categorieA {
+    /* 	background: url(vip.png); */
+    background-color: gold;
+    color: black;
+    /* #3a78c3; */
+}
+
+div.seatCharts-seat.available.categorieB {
+    /* 	background: url(vip.png); */
+    background-color: lightskyblue;
+    color: black;
+    /* #3a78c3; */
+}
+
+div.seatCharts-seat.available.categorieC {
+    /* 	background: url(vip.png); */
+    background-color: palevioletred;
+}
+div.seatCharts-seat.available.categorieD {
+    /* 	background: url(vip.png); */
+    background-color: steelblue;
+}
+/* places disponibles ayant le focus */
+div.seatCharts-seat.focused {
+    background-color: dodgerblue;
+    /* #76B474; */
+
+}
+/* places sélectionnées par l'utilisateur */
+div.seatCharts-seat.selected {
+    background-color: red; /*#E6CAC4;*/
+}
+/* places non disponibles */
+div.seatCharts-seat.unavailable {
+    background-color: #adadad; 
+    /*#472B34;*/
+}
+/* le conteneur pour la carte du théatre */
+div.seatCharts-container {
+    padding: 10px;
+    border-style: dashed;
+    border-width: thin;
+}
+
+#payer * {
+    margin-bottom: 10px;
+}
+
+div.seatCharts-legend {
+    border-style: solid;
+    border-width: thin;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+ul.seatCharts-legendList {
+    padding-left: 0px;
+}
+
+span.seatCharts-legendDescription {
+    margin-left: 5px;
+    line-height: 35px;
+}
+

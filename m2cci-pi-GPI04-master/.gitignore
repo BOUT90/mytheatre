@@ -1,0 +1,27 @@
+.build/
+config.ini
+
+# Editors that create backup files with ~ suffix
+*~
+
+# Python / Jython
+*$py.class
+*.py[cod]
+__pycache__/
+
+# OpenOffice/LibreOffice
+.~lock.*
+
+# PyCharm
+.idea/*
+
+/Dev/MyTheatre/nbproject/private/
+<<<<<<< HEAD
+/Dev/MyTheatre/build/
+=======
+/Dev/MyTheatre/build/
+/Dev/MyTheatre/dist/
+>>>>>>> ad9ff5ae87f0c74877d235b47b7e20bca45c5c1a
+/Dev/Mytheatre/build/
+/Dev/Mytheatre/nbproject/private/
+/Dev/Mytheatre/dist/

@@ -1,0 +1,648 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 févr. 2017, 10:21:52
+    Author     : boutalah
+*/
+
+@font-face {
+    font-family: "trebuchet";
+    src: url('../font/Trebuchet_MS.ttf');
+}
+
+* {
+    font-family: trebuchet, arial, sans-serif, Verdana, Times New Roman ;
+    padding: 0;    /* anulle les marges internes et externes pour tous les éléments*/
+    margin:0;      /* cela permet d'effacer les valeurs par défaut qui peuvent varier 
+                     selon les navigateurs. */
+}
+
+html{
+    height:100%;
+    width: 100%;
+}
+body{
+    background-color: #555;
+    background-image: url('../Images/texture1.jpg');
+    background-attachment: fixed;
+    height: 100%;
+    position: relative;
+}
+
+.presentation{
+    background-image: url('../Images/colonne.png');
+}
+
+em{
+    font-size: 80%;
+}
+
+#wrapper {
+    margin:auto;
+    width:1000px;
+    background-color: white;
+    min-height:100%;
+    max-width:1280px;
+    position: relative;
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.7); 
+}
+
+.detailPage{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.detailPageInfos{
+    padding-left: 30px;
+    padding-right: 20px;
+}
+.detailPageMotDePasse{
+    padding-left: 20px;
+    padding-right: 30px;
+}
+#error-LoginEtOuPassword, #error-motdepasseincorrect {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color:red;
+    font-size:1em;
+
+}
+#modepassfaux{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color:red;
+    font-size:1em;
+
+}
+#error-ModiInfos {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color:red;
+    font-size:1em;
+
+}
+#erro-login {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color:red;
+    font-size:1em;
+
+}
+#detailSpectaclePhoto {
+    padding-top: 20px;
+}
+
+header {
+    width:100%;
+    background-repeat: no-repeat;
+    background-image: url('../Images/TheatreAccueil.jpg');
+    height: 200px;
+    box-shadow: 0px -5px 12px black inset;
+
+
+}
+
+header > nav {
+    position: relative;
+    bottom: -162px;
+}
+
+header h1 {
+    text-align:center;
+    padding: 2em;
+    color: white;
+    font-size: 28pt;
+    text-transform: capitalize;
+
+}
+
+a {
+    color : dodgerblue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.titrePhoto {
+    display: block;
+    margin:auto;
+    width: 100%;
+    text-align: center;
+
+}
+
+.photoSpectacle {
+    border : solid 1px #333333;
+    margin : auto;
+}
+
+#containerMiniPhotoDetail{
+    margin-left : 32px;
+    display: inline-block;
+    top : 0px;
+    height:280px;
+    width:644px;
+    position : absolute;
+    overflow-y: scroll;
+    border : dotted black 1px;
+    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.4) inset;
+}
+
+.photoSpectacleMiniature{
+
+    width: 130px;
+    height: 130px;
+    margin : 10px;
+    border : solid black 1px;
+
+}
+
+.photoDetailSpectacle{
+    width : 100%;
+    margin : auto;
+    position: relative;
+}
+
+a:checked {
+    color : initial;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#resume{
+    display: block;
+    width : fit-content;
+    text-align: justify;
+}
+
+nav ul {
+    padding:3px 0;   /* 3px top and bottom, 0px left and right */
+
+    border-bottom: 1px solid #778; /* width style color */
+    /* font: bold 12px Verdana, sans-serif; */ 
+}
+
+nav ul li {
+    list-style: none; /* No marker is shown */
+    margin: 0; 
+    display: inline;  /* The element is displayed as an inline element
+                        (like span). An inline element has no line break
+                                            before or after it, and it tolerates HTML elements
+                                            next to it */
+}
+
+nav ul li a {
+    padding: 3px 0.5em; 
+    margin-left: 5px; 
+    background: gainsboro; 
+    text-decoration: none; 
+    font-size:20pt;
+    box-shadow: 4px -4px 4px 0px rgba(0, 0, 0, 0.7),
+        0px -3px 4px 0px rgba(0, 0, 0, 0.7) inset;;
+    color: #333333;
+}
+
+#connexion {
+    right: 0px;
+    position :absolute;
+    float : right;
+    margin-right: 5px;
+}
+
+
+nav ul li a:hover {
+
+    background: #eeeeee;
+    border-color: #227;
+    text-decoration: none;
+    color: #181818;
+    box-shadow: 5px -5px 4px 0px rgba(0, 0, 0, 0.7),
+        0px -1px 4px 0px rgba(0, 0, 0, 0.7) inset;
+}
+
+nav ul li a.encours {
+    background: white; 
+    border-bottom: 2px solid white;
+    box-shadow: 6px -6px 4px 0px rgba(0, 0, 0, 0.7);
+    color: black;
+}
+
+.presentation{
+    margin: 10px 0px;
+}
+
+section h1 {
+    color: black;
+    font-size:20pt;
+}
+
+input[type=submit]{
+    width:110px;
+    cursor:pointer;
+    text-transform:capitalize;
+    border:none;
+    padding:6px 0 6px 0;
+    border-radius:8px;
+    background: #6db131;
+    box-shadow: 1px 1px 8px #555;
+    font:bold 13px Arial;
+    color:white;
+    border: solid 1px black;
+}
+
+input[type=submit]:hover {
+    background:forestgreen;
+    color:#fff;
+    box-shadow:none;
+}
+
+input[type=submit]:disabled {
+    background:#778;
+    color:#fff;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+input[type=submit].disabled {
+    background:#778;
+    color:#fff;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+input[type=time] {
+    height:26px;
+}
+
+.disabled {
+    background:#778;
+    color:#fff;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+#spacer{
+    height:30px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+footer{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    height: 20px;
+    background-color: #ff3333;
+    text-align: center;
+}
+
+footer p{
+    text-align: center;
+    font-size: 90%;
+    color: white;
+}
+
+#footerMap{
+    position:inherit;
+}
+
+input[type=date]{
+    margin: 5px 10px;
+    border: 1px solid #669; 
+    background: white;
+    font-weight: bold;
+    border-radius: 12px;
+    font-size:12pt;
+    padding: 2px 5px;
+}
+
+input::-webkit-clear-button { /* Enlève la croix de suppression de la date */
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin:0;
+}
+
+select{
+    width: 150px;  
+    padding: 5px 5px;
+    border: 1px solid #669; 
+    background-color: white;
+    font-size:12pt;
+}
+.filtrageSpectacle{
+    padding: 10px 0 10px 0;
+    margin-top : 10px;
+    margin-bottom : 10px;
+}
+
+
+
+.spectacleMiniFiche {
+    text-align: center;
+    float: left;
+    margin : 10px;
+    width : 225px;
+}
+
+.clearMiniFiche {
+    clear:both;
+}
+
+.retourBouton {   
+    margin-top : 50px;
+    text-align: left;
+    color :cornflowerblue;
+}
+
+#payer > .retourBouton {
+    padding-top : 50px;
+    margin: auto;
+    width: 160px;
+}
+
+#dateRadio {
+    margin-bottom: 20px;
+}
+
+.centerStyle {
+    margin-top : 20px;
+    text-align: center;
+}
+
+.boutonRetour {
+    margin-top : 20px;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 60%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+
+table, th, td {
+    border: 1px solid black; 
+    text-align: left;
+    padding: 8px;
+}
+
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+#recapAchat{
+    margin: 30px 0px 0px 20px;
+}
+#prixtotal{
+}
+#cap{
+    margin-bottom: 10px;
+}
+
+#linkerZone1{
+    position:absolute;
+    height: 30px;
+    width:170px;
+    margin-top:15px;
+    top:256px;
+}
+
+#linkerZone2{
+    position:absolute;
+    height: 30px;
+    width:170px;
+    margin-top:15px;
+    top:301px;
+}
+
+#linkerZone3{
+    position:absolute;
+    height: 30px;
+    width:170px;
+    margin-top:15px;
+    top:346px;
+}
+
+#linkerZone4{
+    position:absolute;
+    height: 30px;
+    width:170px;
+    margin-top:15px;
+    top:392px;
+}
+
+.formulaireCentre{ 
+    border : solid black 2px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.formulaireCentre > div{
+    margin : 10px;
+}
+
+
+#connexionInput1, #connexionInput2{
+    float : right;
+    width: 50%;
+    margin-right: 50px;
+}
+
+#changementinfo1, #changementinfo2, #changementinfo3, #changementinfo4, #changementinfo5, #changementinfo6, #changementinfo7, #changementinfo8{
+    float : right;
+    width: 50%;
+    margin-right: 50px;
+}
+#changementmotdepasse1, #changementmotdepasse2, #ancienmotdepasse{
+    float : right;
+    width: 50%;
+    margin-right: 50px;
+}
+#bloc1, #bloc2, #bloc3, #bloc4, #bloc5, #bloc6, #bloc7, #bloc8, #bloc9, #bloc10{
+    float : right;
+    width: 50%;
+    margin-right: 50px;
+}
+#ajoutTitre{
+    width:40%;
+}
+
+#ajoutResume {
+    width:100%;
+    height: 400%;
+    bottom: 30px;
+
+}
+
+#ajoutDuree {
+    width:10%;
+}
+
+#ajoutValider{
+    width :100%;
+}
+
+.champObligatoire{
+    color: red;
+    margin: 5px;
+}
+
+.boutonsPlusEtMoins input{
+    width : 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 50%;
+    font-size: 100%;
+    margin:0px;
+}
+
+.ajouterDateOuPhoto{
+    background-color: darkseagreen;
+}
+.ajouterDateOuPhoto:hover{
+    background-color: #6db131;
+    color:white;
+}
+
+.supprimerDateOuPhoto{
+    background-color: darksalmon;
+}
+
+.supprimerDateOuPhoto:hover{
+    background-color: #ff3333;
+    color:white;
+}
+
+.supprimerDateOuPhoto:disabled{
+    background-color: #778;
+    color:white;
+}
+
+#toutesLesDates{
+    overflow-y: scroll;
+    height:200px;
+    border: dotted black 1px;
+}
+
+#toutesLesPhotos{
+    overflow-y: scroll;
+    height:200px;
+    border: dotted black 1px;
+}
+
+.photoApercu{
+    border:solid black 1px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+#choixDate {
+    margin-top : 5px;
+    margin-bottom : 5px;
+}
+
+
+#datePicker1, #datePicker2 {
+    border :#6db131 solid 2px;
+}
+
+#datePicker2:disabled{
+    background-color: #cccccc;
+    border:solid 2px #fff;
+}
+
+#typeSpectacleSelect{
+    margin-left:20px;
+}
+
+#emailBoxDetail {
+    position :relative;
+    top:-100px;
+    display: inline-block;
+    width : 160px;
+    float:right;
+    text-align: center;
+}
+
+#emailBoxDetail *{
+    margin-bottom: 5px;
+}
+
+#emailBoxDetail img:hover{
+    cursor: copy;
+}
+
+#tonEmail{
+    width : 150px;
+}
+
+#emailBoxAchat {
+    width : 160px;
+    text-align: center;
+}
+
+#emailBoxAchat *{
+    margin-bottom: 5px;
+}
+#emailBoxAchat img:hover{
+    cursor: copy;
+}
+
+#payer{
+    margin-top:50px;
+    width:167px;
+    font-size:130%;
+}
+
+#logoCompteUtilisateur{
+    position :relative;
+    top:20px;
+    display: inline-block;
+    width : 160px;
+    float:right;
+    text-align: center;
+    color:white;
+    font-weight: bold;
+}
+
+#logoCompteUtilisateur a{
+    text-decoration: none;
+    color:white;
+}
+
+#totalPrix, #reducEtTotal{
+    height:80px;
+}
+
+#tousLesPrixEtNbPlace{
+    text-align: left;
+}
+
+#promotionAccueil{
+    text-align: center;
+    font-size: 160%;
+}
+
+#listeInfoCompte span{
+    margin-top:15px;
+}

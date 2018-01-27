@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="m2cci-pi - Projet d'intégration M2CCI" company="Université Grenobles Alpes" webLink="http://github.com/m2cci" view-date="2017-02-20" view-index="0" gantt-divider-location="618" resource-divider-location="475" version="2.7.2" locale="fr_FR">
+    <description><![CDATA[Le projet d'intégration du master 2 CCI vise à réaliser une application web avec pour objectif principal de mettre en oeuvre les enseignements de :
+(1) base de données
+(2) programmation et langage
+(3) interface homme machine
+(4) génie logiciel]]></description>
+    <view zooming-state="default:4" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="54" order="0"/>
+        <field id="tpd4" name="Date de début" width="16" order="1"/>
+        <field id="tpd5" name="Date de fin" width="14" order="2"/>
+        <field id="tpc0" name="" width="10" order="3"/>
+        <field id="tpc1" name="" width="4" order="4"/>
+        <option id="color.recent"><![CDATA[#cc0033 #0099ff #3399ff #0000ff #ff3366]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nom" width="50" order="0"/>
+        <field id="1" name="Rôle par défaut" width="50" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="Aucun">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="2017" month="2" date="20" type="HOLIDAY" color="#0099ff"/>
+        <date year="2017" month="2" date="21" type="HOLIDAY" color="#0099ff"/>
+        <date year="2017" month="2" date="22" type="HOLIDAY" color="#0099ff"/>
+        <date year="2017" month="2" date="23" type="HOLIDAY" color="#0099ff"/>
+        <date year="2017" month="2" date="24" type="HOLIDAY" color="#0099ff"/>
+        <date year="2017" month="2" date="27" type="NEUTRAL" color="#cc0033"/>
+        <date year="2017" month="2" date="28" type="NEUTRAL" color="#cc0033"/>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+            <taskproperty id="tpc0" name="" type="custom" valuetype="text"/>
+            <taskproperty id="tpc1" name="" type="custom" valuetype="text"/>
+        </taskproperties>
+        <task id="216" name="Implementer scénario 02: ConsultationEtAchat" color="#8cb6ce" meeting="false" start="2017-03-01" duration="5" complete="0" expand="true">
+            <task id="218" name="Conception MDT et IHMA" color="#8cb6ce" meeting="false" start="2017-03-01" duration="1" complete="0" expand="true"/>
+            <task id="219" name="Conception Maquette" color="#8cb6ce" meeting="false" start="2017-03-01" duration="1" complete="0" expand="true">
+                <depend id="258" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="258" name="Conception Maquette" color="#8cb6ce" meeting="false" start="2017-03-02" duration="1" complete="0" expand="true" cost-manual-value="0.0" cost-calculated="true"/>
+            <task id="225" name="gestion du  glossaire" color="#8cb6ce" meeting="false" start="2017-03-01" duration="1" complete="0" expand="true">
+                <depend id="234" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="234" name="gestion du  glossaire" color="#8cb6ce" meeting="false" start="2017-03-02" duration="1" complete="0" expand="true">
+                <depend id="236" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="236" name="gestion du  glossaire" color="#8cb6ce" meeting="false" start="2017-03-03" duration="1" complete="0" expand="true"/>
+            <task id="261" name="Lire et comprendre le code" color="#8cb6ce" meeting="false" start="2017-03-03" duration="1" complete="0" expand="true"/>
+            <task id="221" name="Gestion du  projet Gant" color="#8cb6ce" meeting="false" start="2017-03-01" duration="1" complete="0" expand="true"/>
+            <task id="222" name="gestion de la base donnée" color="#8cb6ce" meeting="false" start="2017-03-06" duration="2" complete="0" expand="true"/>
+            <task id="223" name="implementation sc02" color="#8cb6ce" meeting="false" start="2017-03-06" duration="2" complete="0" expand="true"/>
+        </task>
+        <task id="189" name="V2" color="#8cb6ce" meeting="true" start="2017-03-07" duration="0" complete="0" expand="true"/>
+        <task id="114" name="Audit2" color="#8cb6ce" meeting="true" start="2017-03-08" duration="0" complete="0" expand="true"/>
+        <task id="111" name="V3" color="#8cb6ce" meeting="true" start="2017-03-16" duration="0" complete="0" expand="true"/>
+        <task id="71" name="Tester le logiciel final" color="#8cb6ce" meeting="false" start="2017-03-16" duration="1" complete="0" expand="true"/>
+        <task id="117" name="Soutenance" color="#8cb6ce" meeting="true" start="2017-03-17" duration="0" complete="0" expand="true"/>
+        <task id="119" name="Examen PI" color="#8cb6ce" meeting="true" start="2017-03-20" duration="0" complete="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="GLR" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="1" name="AYE" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="2" name="DNG" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="3" name="IFM" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="4" name="ABB" function="SoftwareDevelopment:2" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="221" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
+        <allocation task-id="218" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="35.0"/>
+        <allocation task-id="225" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="219" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="20.0"/>
+        <allocation task-id="258" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="80.0"/>
+        <allocation task-id="234" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="20.0"/>
+        <allocation task-id="236" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="20.0"/>
+        <allocation task-id="261" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="80.0"/>
+        <allocation task-id="222" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="70.0"/>
+        <allocation task-id="223" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="218" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="35.0"/>
+        <allocation task-id="221" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="25.0"/>
+        <allocation task-id="225" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="219" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="258" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="234" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="236" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="261" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="223" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="221" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="25.0"/>
+        <allocation task-id="218" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="35.0"/>
+        <allocation task-id="225" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="20.0"/>
+        <allocation task-id="219" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="258" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="234" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="236" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="261" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="223" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="221" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="25.0"/>
+        <allocation task-id="218" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="35.0"/>
+        <allocation task-id="225" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="219" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="258" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="234" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="236" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="261" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="223" resource-id="3" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="221" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="25.0"/>
+        <allocation task-id="225" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="218" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="35.0"/>
+        <allocation task-id="219" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="258" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="234" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="236" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="20.0"/>
+        <allocation task-id="261" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="80.0"/>
+        <allocation task-id="223" resource-id="4" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <taskdisplaycolumns>
+        <displaycolumn property-id="tpd2" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd7" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd12" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd3" order="0" width="334" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="100" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="89" visible="true"/>
+        <displaycolumn property-id="tpc0" order="3" width="64" visible="true"/>
+        <displaycolumn property-id="tpc1" order="4" width="27" visible="true"/>
+        <displaycolumn property-id="tpd6" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd10" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd11" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd1" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd8" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd13" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
+    </taskdisplaycolumns>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+    <roles>
+        <role id="1" name=""/>
+    </roles>
+</project>

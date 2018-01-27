@@ -1,0 +1,248 @@
+package Controleurs;
+
+import DAO.InfosUtilisateurDAO;
+import Modeles.PropositionSpectaclePDF;
+import Modeles.InfoPropositionSpec;
+import Modeles.UtilisateurInfos;
+import com.google.zxing.WriterException;
+import java.io.IOException;
+import java.util.Properties;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import im2ag.m2pcci.maildemo.mail.MailSender;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.sql.DataSource;
+
+/**
+ * Cette servlet, réalise l'action associée au bouton acheter du formulaire
+ * "d'achat" défini dans la page index.html. Elle récupère les paramètres du
+ * formulaire (nom, date de l'épreuve, nombre de place, identité et email de
+ * l'utilisateur), génère un billet au format pdf qu'elle envoie par email à
+ * l'acheteur, ensuite la servlet redirige la requête vers une page jsp afin de
+ * confirmer "l'achat" et l'envoi du courriel ou d'afficher un message d'erreur
+ * en cas de problème.
+ *
+ * @author Philippe Genoud (Université Grenoble Alpes - laboratoire LIG STeamer)
+ *
+ */
+@WebServlet(name = "PropositionSpectacleCtrler", urlPatterns = {"/sendPropostionSpec"})
+
+public class PropositionSpectacleCtrler extends HttpServlet {
+
+    @Resource(name = "jdbc/UFRIMA")
+    DataSource ds;
+
+    /**
+     * l'objet mailSession est une ressource gérée par le conteneur de servlets.
+     * Il est défini dans le fichier de configuration context.xml et dans le
+     * fichier web.xml. L'annotation ci-dessous permet de récupérer sa
+     * référence.
+     */
+//    @Resource(name = "mail/DEMO")
+//    private Session mailSession;
+    /* 
+     cela serait mieux de procéder avec une ressource gérée par le serveur
+     mais cela impose d'avoir le droit de copier la fichier javax.mail.jar dans
+     le lib du serveur tomcat. Mais sur les machines de l'ufr les étudiants n'ont
+     pas les droits adminsitrateur, et ecrire ce fichier dans le répertoire 
+     nblib, de .netbeans ne suffit pas.
+     C'est pourquoi l'objet mailSession est configuré avec des paramètres définis
+     comme paramètres d'initialisation de la servlet, dans le fichier web.xml.
+     */
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //----------------------------------------------------------------------
+        // recupération des pramètres de la requête
+        //----------------------------------------------------------------------
+        String recipientEMail = "yassinoabed@gmail.com";
+        //String nom = request.getParameter("textNom");
+        //String titulaire = request.getParameter("titulaireBillet");
+        //int nbTickets = Integer.parseInt(request.getParameter("nbTickets"));
+        //int idEpreuve = Integer.parseInt(request.getParameter("epreuve"));
+
+        // on récupère l'objet Epreuve représentant l'épreuve d'identifiant idEpreuve
+        //Epreuve ep = EpreuveDAO.getEpreuve(idEpreuve);
+        //----------------------------------------------------------------------
+        // génération du ticket au format pdf et envoi par couriel de ce fichier
+        // à l'adresse email de l'utilisateur telle que définie dans le formulaire
+        //----------------------------------------------------------------------
+        boolean ticketEnvoye = false;
+        try {
+            //------------------------------------------------------------------
+            // construction du fichier pdf correspondant au ticket
+            //------------------------------------------------------------------
+            // récupération le chemin absolu de l'image du logo
+            ServletContext cntx = getServletContext();
+            //String logoImagePath = cntx.getRealPath("/images/logo.png");
+
+            //SpectacleDate spectDate = (SpectacleDate) request.getSession().getAttribute("specTest");
+//            List<String> dateTest = new ArrayList<String>();
+//
+//            dateTest.add("10/01/2017");
+//            dateTest.add("11/01/2017");
+//            dateTest.add("12/01/2017");
+//
+//            List<String> heureTest = new ArrayList<String>();
+//
+//            heureTest.add("10:45");
+//            heureTest.add("11:50");
+//            heureTest.add("12:10");
+//
+//            //SpectacleDate specDate=new SpectacleDate(1, "abed", 120,"resumé",dateTest);
+//            Utilisateur user = new Utilisateur("nom",  "prenom",  "email",  "adresse",  "nomAsso ciati onjsd gsbshf gnjsdc cgysdc cgcgc gcxydscgf",  "PrixUnitaireRepresentation", 
+//             "numTel",  "urlSpectacle",  "titreSpec",  "duree",  "resume resumeresume resumeresume resumeresume resumeresume resumeresume resumeresume resumeresume resume ",  "infoSupp",dateTest,heureTest);
+//            request.getSession().setAttribute("userTest", user);
+            String titre = request.getParameter("titre");
+            String NomOrganisme = request.getParameter("organisme");
+            String resume = request.getParameter("resume");
+            String prixunitaire = request.getParameter("prix");
+            String duree = request.getParameter("duree");
+            String complementinfo = request.getParameter("complementinfos");
+            //String date1 = request.getParameter("date1");
+           // String time1 = request.getParameter("time1");
+            int nbRepresentation = Integer.parseInt(request.getParameter("nbDateTot"));
+            String url = "www.abed.com";
+//            String nom = "Abed";
+//            String prenom = "Abed";
+//            String email = "yassinoabed@gmail.com";
+//            String adresse = "3 charle degole";
+//            String numTel="07545478745";
+
+            List<String> listeDate = new ArrayList<>();
+            for (int i = 1; i <= nbRepresentation; i++) {
+                String date = request.getParameter("date" + i);
+                listeDate.add(date);
+            }
+
+            List<String> listeHeure = new ArrayList<>();
+            for (int i = 1; i <= nbRepresentation; i++) {
+                String time = request.getParameter("time" + i);
+                listeHeure.add(time);
+            }
+
+            InfoPropositionSpec infoProposition = new InfoPropositionSpec(NomOrganisme, prixunitaire, url, titre, duree, resume, complementinfo, listeDate, listeHeure);
+            String login = (String) request.getSession().getAttribute("login");
+            UtilisateurInfos producteur = null;
+            try {
+                producteur = InfosUtilisateurDAO.InfosUtilisateur(ds, login);
+            } catch (SQLException ex) {
+                Logger.getLogger(PropositionSpectacleCtrler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            byte[] propositionPDF = PropositionSpectaclePDF.createPDF_AsByteArray(infoProposition, producteur);
+
+            //-----------------------------------------------------------------------
+            // envoi du courriel avec comme document attaché le fichier pdf du ticket
+            //-----------------------------------------------------------------------
+            // création de l'objet mail session, ce code pourrait être avantageusement
+            // remplacé par 
+            //    @Resource(name = "mail/DEMO")
+            //    private Session mailSession;
+            // voir au debut de la servlet, mais pour des raison de configuration
+            // (pas les droits administrateur) pour les étudiants ce n'est pas possible
+            // au niveau des machine de l'ufr.
+            Properties props = new Properties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.host", getInitParameter("smtp_server")); // smtps.ujf-grenoble.fr
+            props.put("mail.smtp.port", getInitParameter("smtp_port")); // 587
+            Session mailSession = Session.getInstance(props,
+                    new javax.mail.Authenticator() {
+                        @Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(getInitParameter("mail_user_name"), getInitParameter("mail_user_passwd"));
+                        }
+                    });
+
+            // création du message
+            String messageBody = "Bonjour\n"
+                    + "voici en document attaché ma popostion pour un spectacle";
+            MailSender.sendMailWithAttachedFile(mailSession,
+                    getInitParameter("sender"),
+                    recipientEMail,
+                    getInitParameter("title"),
+                    messageBody,
+                    "ticket.pdf",
+                    propositionPDF,
+                    "application/pdf");
+            ticketEnvoye = true;
+            //----------------------------------------------------------------------
+            // redirection vers la page jsp appropriée
+            // //----------------------------------------------------------------------
+            //request.setAttribute("epreuve", ep);
+            if (ticketEnvoye) {
+                request.getRequestDispatcher("/WEB-INF/AchatReussi.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("/WEB-INF/EchecAchat.jsp").forward(request, response);
+            }
+        } catch (WriterException ex) {
+            // le ticket n'a pas été envoyé
+            // un message d'erreur sera envoyé à l'utilisateur
+            throw new ServletException(ex.getMessage(), ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(PropositionSpectacleCtrler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

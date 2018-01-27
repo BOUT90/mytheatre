@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <!--
+       Configuration de la servlet TicketCtrler
+    -->
+    
+        <servlet>
+        <servlet-name>ServletEnvoiInformationSpec</servlet-name>
+        <servlet-class>Controleurs.ServletEnvoiInformationSpec</servlet-class>
+        <!--
+           Paramètres d'initialisation de la servlet. Ils sont récupérés à 
+           l'initalisation de la servlet, lors de son chargement par le container
+           (Tomcat).
+        -->
+        <!--
+           Paramètres d'initialisation de la servlet. Ils sont récupérés à 
+           l'initalisation de la servlet, lors de son chargement par le container
+           (Tomcat).
+        -->
+        <init-param>
+            <!--    
+                serveur smtp  
+            -->
+            <param-name>smtp_server</param-name>
+            <param-value>152.77.82.189</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                port serveur smtp  
+            -->
+            <param-name>smtp_port</param-name>
+            <param-value>587</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                nom utilisateur mail 
+            -->
+            <param-name>mail_user_name</param-name>
+            <param-value>yassinea</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                mot de passe utilisateur mail  
+            -->
+            <param-name>mail_user_passwd</param-name>
+            <param-value>cQdcQTx9ZG</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                adresse mail pour l'expéditeur 
+            -->
+            <param-name>sender</param-name>
+            <param-value>MyTheatre</param-value>
+        </init-param>
+        <init-param>
+            <!--
+               le titre (objet) du mail
+            -->
+            <param-name>title</param-name>
+            <param-value>Les informations sur le spectacle demandé.</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>PropositionSpectacleCtrler</servlet-name>
+        <servlet-class>Controleurs.PropositionSpectacleCtrler</servlet-class>
+        <!--
+           Paramètres d'initialisation de la servlet. Ils sont récupérés à 
+           l'initalisation de la servlet, lors de son chargement par le container
+           (Tomcat).
+        -->
+        <!--
+           Paramètres d'initialisation de la servlet. Ils sont récupérés à 
+           l'initalisation de la servlet, lors de son chargement par le container
+           (Tomcat).
+        -->
+        <init-param>
+            <!--    
+                serveur smtp  
+            -->
+            <param-name>smtp_server</param-name>
+            <param-value>152.77.82.189</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                port serveur smtp  
+            -->
+            <param-name>smtp_port</param-name>
+            <param-value>587</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                nom utilisateur mail 
+            -->
+            <param-name>mail_user_name</param-name>
+            <param-value>yassinea</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                mot de passe utilisateur mail  
+            -->
+            <param-name>mail_user_passwd</param-name>
+            <param-value>cQdcQTx9ZG</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                adresse mail pour l'expéditeur 
+            -->
+            <param-name>sender</param-name>
+            <param-value>MyTheatre</param-value>
+        </init-param>
+        <init-param>
+            <!--
+               le titre (objet) du mail
+            -->
+            <param-name>title</param-name>
+            <param-value>Proposition de spectacle.</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>TicketsCtrler</servlet-name>
+        <servlet-class>Controleurs.TicketsCtrler</servlet-class>
+        <!--
+           Paramètres d'initialisation de la servlet. Ils sont récupérés à 
+           l'initalisation de la servlet, lors de son chargement par le container
+           (Tomcat).
+        -->
+        <!--
+           Paramètres d'initialisation de la servlet. Ils sont récupérés à 
+           l'initalisation de la servlet, lors de son chargement par le container
+           (Tomcat).
+        -->
+        <init-param>
+            <!--    
+                serveur smtp  
+            -->
+            <param-name>smtp_server</param-name>
+            <param-value>152.77.82.189</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                port serveur smtp  
+            -->
+            <param-name>smtp_port</param-name>
+            <param-value>587</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                nom utilisateur mail 
+            -->
+            <param-name>mail_user_name</param-name>
+            <param-value>yassinea</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                mot de passe utilisateur mail  
+            -->
+            <param-name>mail_user_passwd</param-name>
+            <param-value>cQdcQTx9ZG</param-value>
+        </init-param>
+        <init-param>
+            <!--    
+                adresse mail pour l'expéditeur 
+            -->
+            <param-name>sender</param-name>
+            <param-value>MyTheatre</param-value>
+        </init-param>
+        <init-param>
+            <!--
+               le titre (objet) du mail
+            -->
+            <param-name>title</param-name>
+            <param-value>Votre ticket électronique   !!!</param-value>
+        </init-param>
+    </servlet>
+
+    <!--
+       Configuration de la durée maximum d'mail_user_nameinactivité d'une session utilisateur
+       pour cette application web.
+    -->
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <!--
+      Definition de la ressource Session pour le mail
+    -->
+    <resource-ref>
+        <res-ref-name>mail/DEMO</res-ref-name>
+        <res-type>javax.mail.Session</res-type>
+    </resource-ref>
+    
+    <servlet>
+        <servlet-name>indexCtrler</servlet-name>
+        <servlet-class>Controleurs.indexCtrler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>indexCtrler</servlet-name>
+        <url-pattern>/indexCtrler</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>indexCtrler</welcome-file>
+    </welcome-file-list>  
+</web-app>
